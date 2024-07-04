@@ -14,7 +14,7 @@
                     @click="authorization()">Авторизоваться</v-btn>
             </v-card-actions>
             <v-card-item class="justify-center">
-                <router-link style="color: black;" to="/registration">
+                <router-link to="/registration">
                     <v-text>Зарегистрироваться</v-text>
                 </router-link>
             </v-card-item>
@@ -50,12 +50,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-    h4 {
-        color: red;
-    }
-    a, .v-btn {
-        color: black;
-    }
-</style>

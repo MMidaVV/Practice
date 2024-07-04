@@ -22,9 +22,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.v-footer .v-card__text {
-    max-height: fit-content;
-}
-</style>

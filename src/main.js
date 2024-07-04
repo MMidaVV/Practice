@@ -5,6 +5,19 @@ import { loadFonts } from './plugins/webfontloader'
 import router from './router'
 import { createStore } from 'vuex'
 import axios from 'axios'
+import '@/assets/index.css'
+
+const axiosInstance = axios.create({
+    baseURL: 'http://localhost:3000'
+})
+
+axiosInstance.interceptors.response.use(
+    response => response,
+    error => {
+        console.error('Произошла ошибка:', error)
+        return Promise.reject(error)
+    }
+)
 
 
 const store = createStore({
@@ -31,61 +44,36 @@ const store = createStore({
             state.users = users
         }
     },
-    actions: {
+    actions : {
         async fetchTasks({ commit }) {
-            try {
-                const response = await axios.get('http://localhost:3000/tasks')
-                commit('setTasks', response.data)
-            } catch (error) {
-                console.error('Error fetching tasks:', error)
-            }
+            const response = await axiosInstance.get('/tasks')
+            commit('setTasks', response.data)
         },
         async addTask({ commit }, task) {
-            try {
-                const response = await axios.post('http://localhost:3000/tasks', task)
-                commit('addTask', response.data)
-            } catch (error) {
-                console.error('Error adding task:', error)
-            }
+            const response = await axiosInstance.post('/tasks', task)
+            commit('addTask', response.data)
         },
         async updateTask({ commit, state }, { index, task }) {
-            try {
-                await axios.put(`http://localhost:3000/tasks/${state.tasks[index].id}`, task)
-                commit('updateTask', { index, task })
-            } catch (error) {
-                console.error('Error updating task:', error)
-            }
+            await axiosInstance.put(`/tasks/${state.tasks[index].id}`, task)
+            commit('updateTask', { index, task })
         },
         async deleteTask({ commit, state }, index) {
-            try {
-                await axios.delete(`http://localhost:3000/tasks/${state.tasks[index].id}`)
-                commit('deleteTask', index)
-            } catch (error) {
-                console.error('Error deleting task:', error)
-            }
+            await axiosInstance.delete(`/tasks/${state.tasks[index].id}`)
+            commit('deleteTask', index)
         },
         async authorization({ commit }, { login, password }) {
-            try {
-                const response = await axios.get(`http://localhost:3000/users?username=${login}`);
-                const user = response.data.find(u => u.username === login && u.password === password);
-                if (user) {
-                    commit('setUser', user);
-                    return true;
-                } else {
-                    return false;
-                }
-            } catch (error) {
-                console.error('Ошибка при входе в систему:', error);
-                return false;
+            const response = await axiosInstance.get(`/users?username=${login}`)
+            const user = response.data.find(u => u.username === login && u.password === password)
+            if (user) {
+                commit('setUser', user)
+                return true
+            } else {
+                return false
             }
         },
         async registration({ commit }, { username, password }) {
-            try {
-                const response = await axios.post('http://localhost:3000/users', { username, password })
-                commit('setUser', response.data)
-            } catch (error) {
-                console.error('Error registering user:', error)
-            }
+            const response = await axiosInstance.post('/users', { username, password })
+            commit('setUser', response.data)
         }
     }
 })

@@ -1,0 +1,18 @@
+body a {
+  color: black;
+}
+body a .v-btn {
+  text-decoration: none;
+  font-weight: bold;
+}
+body .v-btn__content {
+  font-weight: bold;
+}
+body .v-card-text h4 {
+  color: red;
+}
+body .v-footer .v-card__text {
+  max-height: fit-content;
+}
+
+/*# sourceMappingURL=index.css.map */

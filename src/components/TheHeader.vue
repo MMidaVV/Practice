@@ -30,11 +30,5 @@ export default {
 }
 </script>
 
-<style scoped>
-    a, .v-btn, .v-btn__content {
-        color: black !important;
-        text-decoration: none;
-        font-weight: bold;
-    }
-</style>
+
 

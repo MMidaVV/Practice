@@ -50,11 +50,3 @@ export default {
 }
 </script>
 
-<style scoped>
-    h4 {
-        color: red;
-    }
-    a, .v-btn {
-        color: black;
-    }
-</style>

@@ -1,0 +1,25 @@
+@import "variables.scss";
+
+body {
+    a {
+        color: $main-a-color;
+        .v-btn {
+            text-decoration: none;
+            font-weight: bold;
+        }
+    }
+    .v-btn__content {
+        font-weight: bold;
+    }
+    .v-card-text {
+        h4 {
+            color: red;
+        }
+    }
+
+    .v-footer {
+        .v-card__text {
+            max-height: fit-content;
+        }
+    }
+}
