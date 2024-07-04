@@ -7,7 +7,7 @@
                 <v-text-field v-model="password" class="mt-2" dense label="Введите пароль"></v-text-field>
             </v-card-text>
             <v-card-text v-if="checkAuthorization === false">
-                <h4 style="color: red;" class="px-5 text-center">Не верный логин или пароль</h4>
+                <h4 class="px-5 text-center">Не верный логин или пароль</h4>
             </v-card-text>
             <v-card-actions class="justify-center">
                 <v-btn color="indigo-darken-3" variant="outlined" class="font-weight-bold"
@@ -50,3 +50,12 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    h4 {
+        color: red;
+    }
+    a, .v-btn {
+        color: black;
+    }
+</style>

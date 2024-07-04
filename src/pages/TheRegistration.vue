@@ -10,14 +10,14 @@
                     v-model="confirmPassword"></v-text-field>
             </v-card-text>
             <v-card-text v-if="passwordsMatch === false" class="py-0">
-                <h4 style="color: red;" class="px-5 text-center">Пароли не совпадают</h4>
+                <h4 class="px-5 text-center">Пароли не совпадают</h4>
             </v-card-text>
             <v-card-actions v-if="passwordsMatch === true" class="justify-center">
                 <v-btn color="indigo-darken-3" variant="outlined" class="font-weight-bold"
                     @click="registration(username, password, confirmPassword)">Зарегистрироваться</v-btn>
             </v-card-actions>
             <v-card-item class="justify-center">
-                <router-link style="color: black;" to="/authorization">
+                <router-link to="/authorization">
                     <v-text>Авторизоваться</v-text>
                 </router-link>
             </v-card-item>
@@ -49,3 +49,12 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+    h4 {
+        color: red;
+    }
+    a, .v-btn {
+        color: black;
+    }
+</style>
